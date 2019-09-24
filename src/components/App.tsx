@@ -26,11 +26,10 @@ interface State {
 /**
  * Uses flex box to center stuff
  */
-const CenteringDiv = styled("div")`
-    width: "100%";
-    display: flex;
-    justify-content: center;
-`;
+const CenteringStyle = {
+    display: "flex",
+    justifyContent: "center"
+};
 
 const StyledBoard = styled(Board)`
     margin: 10px;
@@ -119,17 +118,8 @@ class App extends React.Component<Props, State> {
                 <Title level={2}>by Matthew Barnes</Title>
 
                 <Row>
-                    <Col span={4}></Col>
-                    <Col span={10}>
-                        <CenteringDiv>
-                            <StyledBoard
-                                onClick={this.onTileClick.bind(this)}
-                                grid={this.state.grid.getData()}
-                            />
-                        </CenteringDiv>
-                    </Col>
-                    <Col span={6}>
-
+                    <Col xs={0} md={4} />
+                    <Col xs={{span: 24, pull: 0}} md={{span: 6, push: 10}}>
                         <Config
                             gridSize={this.state.gridSize}
                             blockCount={this.state.blockCount}
@@ -137,9 +127,14 @@ class App extends React.Component<Props, State> {
                             onGridSizeChange={this.onGridSizeChange.bind(this)}
                             onBlockCountChange={this.onBlockCountChange.bind(this)}
                         />
-
                     </Col>
-                    <Col span={4}></Col>
+                    <Col xs={{span: 24, push: 0}} md={{span: 10, pull: 6}} style={CenteringStyle}>
+                        <StyledBoard
+                            onClick={this.onTileClick.bind(this)}
+                            grid={this.state.grid.getData()}
+                        />
+                    </Col>
+                    <Col xs={0} md={4} />
                 </Row>
             </div>
         );
