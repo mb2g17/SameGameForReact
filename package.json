@@ -2,6 +2,7 @@
   "name": "samegame",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://Taking1n1.github.io/SameGameForReact",
   "dependencies": {
     "@types/antd": "^1.0.0",
     "@types/jest": "24.0.18",
