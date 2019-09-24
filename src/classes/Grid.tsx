@@ -19,4 +19,13 @@ export class Grid {
     getData(): number[][] {
         return _.cloneDeep(this.data);
     }
+
+    /**
+     * Selects a position, and removes the group, if it can
+     * @param row - the row to select on
+     * @param col - the column, to select on
+     */
+    select(row: number, col: number): void {
+
+    }
 }

@@ -5,7 +5,7 @@ import { Board } from "./Board";
 import { Grid } from "../classes/Grid";
 
 interface Props {
-
+    startingGrid?: Grid
 }
 
 interface State {
@@ -16,11 +16,11 @@ class App extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            grid: new Grid([
+            grid: this.props.startingGrid === undefined ? new Grid([
                 [1, 2, 3],
                 [4, 5, 6],
                 [7, 8, 9]
-            ])
+            ]) : this.props.startingGrid
         };
     }
 

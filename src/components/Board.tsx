@@ -1,6 +1,8 @@
 import React from "react";
-import { Grid } from "../classes/Grid";
 import _ from "lodash";
+
+import { Grid } from "../classes/Grid";
+import { Tile } from "./Tile";
 
 interface Props {
     grid: Grid
@@ -25,9 +27,6 @@ export class Board extends React.Component<Props, State> {
         // Declares JSX array to render
         let jsx: React.ReactElement<any>[] = [];
 
-        // Transposes data
-        //gridArray = _.unzip(gridArray);
-
         // For every row
         _.forEach(gridArray, (r: number[], rowKey: number) => {
             // Create our jsx row
@@ -36,7 +35,7 @@ export class Board extends React.Component<Props, State> {
             // For every cell in the row
             _.forEach(r, (c: number, cellKey: number) => {
                 // Add a cell
-                jsxRow.push(<td key={cellKey}>{ c }</td>);
+                jsxRow.push(<Tile no={c} key={2 ** rowKey * 3 ** cellKey} />);
             });
 
             // Add row to our table
