@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a0d8f21dc52e769e15f21514e98ba2f6",
+    "revision": "e9c7304945bd2eafa0bc80e93b7f2118",
     "url": "/SameGameForReact/index.html"
   },
   {
-    "revision": "0fc09187f21c063f5c2a",
+    "revision": "1f05042c90e3bbd3e424",
     "url": "/SameGameForReact/static/css/2.cc82b09a.chunk.css"
   },
   {
-    "revision": "1aa692c42979a4b4a3e8",
+    "revision": "a2c441de99543e8463f7",
     "url": "/SameGameForReact/static/css/main.eab24d3c.chunk.css"
   },
   {
-    "revision": "0fc09187f21c063f5c2a",
-    "url": "/SameGameForReact/static/js/2.6417fd73.chunk.js"
+    "revision": "1f05042c90e3bbd3e424",
+    "url": "/SameGameForReact/static/js/2.3bf0cc30.chunk.js"
   },
   {
-    "revision": "1aa692c42979a4b4a3e8",
-    "url": "/SameGameForReact/static/js/main.0df726c9.chunk.js"
+    "revision": "a2c441de99543e8463f7",
+    "url": "/SameGameForReact/static/js/main.67493c35.chunk.js"
   },
   {
     "revision": "494236e70ff6fa9e4768",
