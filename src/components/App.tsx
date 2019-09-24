@@ -133,6 +133,8 @@ class App extends React.Component<Props, State> {
                             onClick={this.onTileClick.bind(this)}
                             grid={this.state.grid.getData()}
                         />
+                        {this.state.grid.isGameFinished() ? <h1>Game over!</h1> : <h1>Game isn't over yet</h1>}
+                        {this.state.grid.didWeWin() ? <h1>We won!</h1> : <h1>We haven't won yet</h1>}
                     </Col>
                     <Col xs={0} md={4} />
                 </Row>
