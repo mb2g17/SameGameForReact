@@ -6,8 +6,10 @@ import { Slider, Typography, Button, Row, Col } from 'antd';
 
 import { Board } from "./Board";
 import { Grid } from "../classes/Grid";
+import { Config } from "./config/Config";
 
 import './App.css';
+import { SliderValue } from 'antd/lib/slider';
 
 const { Title, Text } = Typography;
 
@@ -36,10 +38,6 @@ const StyledBoard = styled(Board)`
 
 const StyledHeading = styled(Title)`
     margin-top: 20px;
-`;
-
-const StyledSlider = styled(Slider)`
-    width: 75%;
 `;
 
 class App extends React.Component<Props, State> {
@@ -94,10 +92,11 @@ class App extends React.Component<Props, State> {
      * When we change the grid size
      * @param value what to change the grid size to
      */
-    onGridSizeChange(value: any): void {
-        this.randomiseGrid(value, this.state.blockCount, false);
+    onGridSizeChange(value: SliderValue): void {
+        let numValue: number = parseInt(value.toString());
+        this.randomiseGrid(numValue, this.state.blockCount, false);
         this.setState({
-            gridSize: value
+            gridSize: numValue
         });
     }
 
@@ -105,10 +104,11 @@ class App extends React.Component<Props, State> {
      * When we change the block count
      * @param value what to change the block count to
      */
-    onBlockCountChange(value: any): void {
-        this.randomiseGrid(this.state.gridSize, value, false);
+    onBlockCountChange(value: SliderValue): void {
+        let numValue: number = parseInt(value.toString());
+        this.randomiseGrid(this.state.gridSize, numValue, false);
         this.setState({
-            blockCount: value
+            blockCount: numValue
         });
     }
 
@@ -129,28 +129,15 @@ class App extends React.Component<Props, State> {
                         </CenteringDiv>
                     </Col>
                     <Col span={6}>
-                        <Button
-                            onClick={() => this.randomiseGrid(this.state.gridSize, this.state.blockCount, false)}
-                            type="primary"
-                        >Randomise grid</Button>
 
-                        <CenteringDiv>
-                            <StyledSlider
-                                min={3}
-                                max={15}
-                                onChange={this.onGridSizeChange.bind(this)}
-                                defaultValue={10}
-                            />
-                        </CenteringDiv>
+                        <Config
+                            gridSize={this.state.gridSize}
+                            blockCount={this.state.blockCount}
+                            onRandomiseGridClick={() => this.randomiseGrid(this.state.gridSize, this.state.blockCount, false)}
+                            onGridSizeChange={this.onGridSizeChange.bind(this)}
+                            onBlockCountChange={this.onBlockCountChange.bind(this)}
+                        />
 
-                        <CenteringDiv>
-                            <StyledSlider
-                                min={2}
-                                max={7}
-                                onChange={this.onBlockCountChange.bind(this)}
-                                defaultValue={4}
-                            />
-                        </CenteringDiv>
                     </Col>
                     <Col span={4}></Col>
                 </Row>

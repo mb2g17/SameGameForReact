@@ -51,6 +51,7 @@ export class Tile extends React.Component<Props, State> {
         return (<td>
             <img
                 onClick={() => this.props.onClick(this.props.no)}
+                //onMouseEnter={() => alert(this.props.no)}
                 src={colour}
                 alt={"" + this.props.no}
             />
