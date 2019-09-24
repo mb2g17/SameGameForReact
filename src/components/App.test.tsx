@@ -31,7 +31,7 @@ it("should render boards with a table", () => {
         ReactDOM.render(<App />, container);
     });
     if (container != null)
-        expect(container.innerHTML).toContain("<table>");
+        expect(container.innerHTML).toContain("<table");
 });
 
 it("should render board icons", () => {

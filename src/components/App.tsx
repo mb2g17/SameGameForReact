@@ -76,6 +76,7 @@ class App extends React.Component<Props, State> {
      */
     onTileClick(row: number, col: number): void {
         this.state.grid.select(row, col);
+        this.forceUpdate();
     }
 
     render(): React.ReactElement<any> {
