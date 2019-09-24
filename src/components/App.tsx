@@ -84,8 +84,11 @@ class App extends React.Component<Props, State> {
      * @param col - the column of the tile clicked
      */
     onTileClick(row: number, col: number): void {
-        this.state.grid.select(row, col);
-        this.forceUpdate();
+        let newGrid = this.state.grid.select(row, col);
+        this.setState({
+            ...this.state,
+            grid: newGrid
+        })
     }
 
     /**

@@ -7,7 +7,7 @@ export class Grid {
     /**
      * Grid in number form
      */
-    private data: number[][];
+    private readonly data: number[][];
 
     constructor(dataParam: number[][]) {
         this.data = dataParam;
@@ -49,23 +49,27 @@ export class Grid {
      * Selects a position, and removes the group, if it can
      * @param row - the row to select on
      * @param col - the column, to select on
+     * @returns a new Grid where the tile has been selected
      */
-    select(row: number, col: number): void {
+    select(row: number, col: number): Grid {
+        // Gets data to edit
+        let newData: number[][] = this.getData();
+        
         // Gets the colour to dispose of
-        let selectedColour: number = this.data[row][col];
+        let selectedColour: number = newData[row][col];
 
         // If we just clicked on nothing, do nothing
         if (selectedColour === 0)
-            return;
+            return new Grid(newData);
 
         // If this group is only one tile big, do nothing
         let adjacentTiles = this.getAdjacentTiles(row, col);
-        adjacentTiles = _.filter(adjacentTiles, ([r, c]) => this.data[r][c] === selectedColour);
+        adjacentTiles = _.filter(adjacentTiles, ([r, c]) => newData[r][c] === selectedColour);
         if (adjacentTiles.length === 0)
-            return;
+            return new Grid(newData);
 
         // Gets size of grid
-        let size: number = this.data.length;
+        let size: number = newData.length;
 
         // Stores a fringe of tiles that have this colour and are connected to our selected one
         let fringe: [number, number][] = [ [row, col] ];
@@ -83,13 +87,13 @@ export class Grid {
                 let [ selectedRow, selectedCol ] = tile;
 
                 // Removes it
-                this.data[selectedRow][selectedCol] = 0;
+                newData[selectedRow][selectedCol] = 0;
 
                 // Gets adjacent tiles
                 let adjacentTiles = this.getAdjacentTiles(selectedRow, selectedCol);
 
                 // Filters out tiles that aren't our colour
-                adjacentTiles = _.filter(adjacentTiles, ([r, c]) => this.data[r][c] === selectedColour);
+                adjacentTiles = _.filter(adjacentTiles, ([r, c]) => newData[r][c] === selectedColour);
 
                 // Adds these to the fringe
                 _.forEach(adjacentTiles, e => fringe.push(e));
@@ -99,7 +103,7 @@ export class Grid {
         }
 
         // Temporarily transposes the grid
-        this.data = _.unzip(this.data);
+        newData = _.unzip(newData);
 
         // For every row (moving tiles down)
         for (let i = 0; i < size; i++)
@@ -111,12 +115,12 @@ export class Grid {
             for (let j = size - 1; j >= 0; j--)
             {
                 // If this is 0, increase displacement
-                if (this.data[i][j] === 0)
+                if (newData[i][j] === 0)
                     displacement++;
                 else {
-                    let val = this.data[i][j];
-                    this.data[i][j] = 0;
-                    this.data[i][j + displacement] = val;
+                    let val = newData[i][j];
+                    newData[i][j] = 0;
+                    newData[i][j + displacement] = val;
                 }
             }
         }
@@ -128,16 +132,19 @@ export class Grid {
         for (let i = size - 1; i >= 0; i--)
         {
             // If this row is all zeroes
-            if (_.reduce(this.data[i], (a, x) => a + x, 0) === 0)
+            if (_.reduce(newData[i], (a, x) => a + x, 0) === 0)
                 displacement++;
             else {
-                let val = _.clone(this.data[i]);
-                this.data[i] = _.map(this.data[i], x => 0);
-                this.data[i + displacement] = val;
+                let val = _.clone(newData[i]);
+                newData[i] = _.map(newData[i], x => 0);
+                newData[i + displacement] = val;
             }
         }
 
         // Transposes the grid back again
-        this.data = _.unzip(this.data);
+        newData = _.unzip(newData);
+
+        // Returns grid
+        return new Grid(newData);
     }
 }
