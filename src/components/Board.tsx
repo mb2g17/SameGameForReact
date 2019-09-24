@@ -10,17 +10,9 @@ interface Props {
 }
 
 interface State {
-    name: string
 }
 
 export class Board extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            name: "Matt"
-        };
-    }
-
     /**
      * When user clicks on a tile
      * @param rowNo - the row of the tile clicked
@@ -44,7 +36,8 @@ export class Board extends React.Component<Props, State> {
                 // Add a cell
                 jsxRow.push(<Tile
                     onClick={() => this.onTileClick(rowKey, cellKey)}
-                    no={c} key={2 ** rowKey * 3 ** cellKey}
+                    no={c}
+                    key={2 ** rowKey * 3 ** cellKey}
                 />);
             });
 

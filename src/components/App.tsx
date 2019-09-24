@@ -17,6 +17,7 @@ interface Props {
 
 interface State {
     grid: Grid;
+    gridSize: number;
 }
 
 /**
@@ -46,7 +47,8 @@ class App extends React.Component<Props, State> {
 
         // Sets up grid
         this.state = {
-            grid: this.props.startingGrid !== undefined ? this.props.startingGrid : this.randomiseGrid(10)
+            grid: this.props.startingGrid !== undefined ? this.props.startingGrid : this.randomiseGrid(10),
+            gridSize: 10
         };
     }
 
@@ -88,7 +90,9 @@ class App extends React.Component<Props, State> {
      */
     onSliderSlide(value: any): void {
         this.randomiseGrid(value);
-        this.forceUpdate();
+        this.setState({
+            gridSize: value
+        });
     }
 
     render(): React.ReactElement<any> {
@@ -109,7 +113,7 @@ class App extends React.Component<Props, State> {
                     </Col>
                     <Col span={6}>
                         <Button
-                            onClick={() => this.randomiseGrid(10)}
+                            onClick={() => this.randomiseGrid(this.state.gridSize)}
                             type="primary"
                         >Randomise grid</Button>
 

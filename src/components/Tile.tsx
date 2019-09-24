@@ -14,9 +14,9 @@ interface Props {
 interface State {
 }
 
-export class Tile extends React.Component<Props, {}> {
+export class Tile extends React.Component<Props, State> {
     render(): React.ReactElement<any> {
-        let colour: any;
+        let colour: string;
         switch (this.props.no)
         {
             case 1:
