@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/SameGameForReact/static/css/main.eab24d3c.chunk.css",
+    "main.js": "/SameGameForReact/static/js/main.0df726c9.chunk.js",
+    "main.js.map": "/SameGameForReact/static/js/main.0df726c9.chunk.js.map",
+    "runtime-main.js": "/SameGameForReact/static/js/runtime-main.a4b93e15.js",
+    "runtime-main.js.map": "/SameGameForReact/static/js/runtime-main.a4b93e15.js.map",
+    "static/css/2.cc82b09a.chunk.css": "/SameGameForReact/static/css/2.cc82b09a.chunk.css",
+    "static/js/2.6417fd73.chunk.js": "/SameGameForReact/static/js/2.6417fd73.chunk.js",
+    "static/js/2.6417fd73.chunk.js.map": "/SameGameForReact/static/js/2.6417fd73.chunk.js.map",
+    "index.html": "/SameGameForReact/index.html",
+    "precache-manifest.d231bc50e0f6145be9e88c6bb2b384a7.js": "/SameGameForReact/precache-manifest.d231bc50e0f6145be9e88c6bb2b384a7.js",
+    "service-worker.js": "/SameGameForReact/service-worker.js",
+    "static/css/2.cc82b09a.chunk.css.map": "/SameGameForReact/static/css/2.cc82b09a.chunk.css.map",
+    "static/css/main.eab24d3c.chunk.css.map": "/SameGameForReact/static/css/main.eab24d3c.chunk.css.map",
+    "static/media/blank.fw.png": "/SameGameForReact/static/media/blank.fw.b8bd58ca.png",
+    "static/media/blue.fw.png": "/SameGameForReact/static/media/blue.fw.6c33a757.png",
+    "static/media/cyan.fw.png": "/SameGameForReact/static/media/cyan.fw.d2cdd8c8.png",
+    "static/media/green.fw.png": "/SameGameForReact/static/media/green.fw.c857b8ef.png",
+    "static/media/orange.fw.png": "/SameGameForReact/static/media/orange.fw.5a79c073.png",
+    "static/media/purple.fw.png": "/SameGameForReact/static/media/purple.fw.661f2f96.png",
+    "static/media/red.fw.png": "/SameGameForReact/static/media/red.fw.1ddc275d.png",
+    "static/media/yellow.fw.png": "/SameGameForReact/static/media/yellow.fw.57c30b6e.png"
+  }
+}
