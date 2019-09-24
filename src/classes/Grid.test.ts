@@ -65,3 +65,31 @@ it('should do nothing when clicking on nothing', function () {
         [1, 2, 3]
     ]);
 });
+
+it('should move tiles to the right on the bottom row', function () {
+    // Test 1
+    let grid: Grid = new Grid([
+        [0, 0, 0],
+        [0, 3, 0],
+        [1, 3, 2]
+    ]);
+    grid.select(1, 1);
+    expect(grid.getData()).toEqual([
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 1, 2]
+    ]);
+
+    // Test 2
+    grid = new Grid([
+        [0, 0, 0, 0],
+        [0, 3, 0, 0],
+        [1, 3, 0, 2]
+    ]);
+    grid.select(1, 1);
+    expect(grid.getData()).toEqual([
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 1, 2]
+    ]);
+});

@@ -78,10 +78,40 @@ export class Grid {
         // Temporarily transposes the grid
         this.data = _.unzip(this.data);
 
-        // For every row
+        // For every row (moving tiles down)
         for (let i = 0; i < size; i++)
         {
+            // Stores displacement
+            let displacement = 0;
 
+            // Start from the bottom, work our way up
+            for (let j = size - 1; j >= 0; j--)
+            {
+                // If this is 0, increase displacement
+                if (this.data[i][j] === 0)
+                    displacement++;
+                else {
+                    let val = this.data[i][j];
+                    this.data[i][j] = 0;
+                    this.data[i][j + displacement] = val;
+                }
+            }
+        }
+
+        // Stores displacement
+        let displacement = 0;
+
+        // For every row (moving rows to the right)
+        for (let i = size - 1; i >= 0; i--)
+        {
+            // If this row is all zeroes
+            if (_.reduce(this.data[i], (a, x) => a + x, 0) === 0)
+                displacement++;
+            else {
+                let val = _.clone(this.data[i]);
+                this.data[i] = _.map(this.data[i], x => 0);
+                this.data[i + displacement] = val;
+            }
         }
 
         // Transposes the grid back again
