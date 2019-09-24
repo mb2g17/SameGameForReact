@@ -6,6 +6,7 @@ import { Tile } from "./Tile";
 interface Props {
     grid: number[][];
     onClick: (r: number, c: number) => void;
+    className?: string;
 }
 
 interface State {
@@ -52,6 +53,8 @@ export class Board extends React.Component<Props, State> {
         });
 
         // Renders jsx
-        return (<table><tbody>{jsx}</tbody></table>);
+        return (<table className={this.props.className}>
+            <tbody>{jsx}</tbody>
+        </table>);
     }
 }

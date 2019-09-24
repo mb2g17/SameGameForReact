@@ -2,10 +2,14 @@ import React from 'react';
 import _ from 'lodash';
 import styled from "styled-components";
 
+import { Typography, Button } from 'antd';
+
 import { Board } from "./Board";
 import { Grid } from "../classes/Grid";
 
 import './App.css';
+
+const { Title } = Typography;
 
 interface Props {
     startingGrid?: Grid
@@ -18,10 +22,18 @@ interface State {
 /**
  * Uses flex box to center stuff
  */
-const CenteringDiv = styled.div`
+const CenteringDiv = styled("div")`
     width: "100vw";
     display: flex;
     justify-content: center;
+`;
+
+const StyledBoard = styled(Board)`
+    margin: 10px;
+`;
+
+const StyledHeading = styled(Title)`
+    margin-top: 20px;
 `;
 
 class App extends React.Component<Props, State> {
@@ -69,17 +81,20 @@ class App extends React.Component<Props, State> {
     render(): React.ReactElement<any> {
         return (
             <div className="App">
-                <h1>SameGame for React</h1>
-                <h2>by Matthew Barnes</h2>
+                <StyledHeading>SameGame for React</StyledHeading>
+                <Title level={2}>by Matthew Barnes</Title>
 
                 <CenteringDiv>
-                    <Board
+                    <StyledBoard
                         onClick={this.onTileClick.bind(this)}
                         grid={this.state.grid.getData()}
                     />
                 </CenteringDiv>
 
-                <button onClick={() => this.randomiseGrid(10)}>Randomise grid</button>
+                <Button
+                    onClick={() => this.randomiseGrid(10)}
+                    type="primary"
+                >Randomise grid</Button>
             </div>
         );
     }
