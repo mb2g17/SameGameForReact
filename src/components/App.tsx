@@ -31,6 +31,14 @@ const CenteringStyle = {
     justifyContent: "center"
 };
 
+const WinStyle = {
+    color: "green"
+};
+
+const LoseStyle = {
+    color: "red"
+};
+
 const StyledBoard = styled(Board)`
     margin: 10px;
 `;
@@ -112,6 +120,16 @@ class App extends React.Component<Props, State> {
     }
 
     render(): React.ReactElement<any> {
+        let winComponent: React.ReactElement | null = null;
+
+        if (this.state.grid.isGameFinished())
+        {
+            if (this.state.grid.didWeWin())
+                winComponent = <Title level={3} style={WinStyle}>You win!</Title>;
+            else
+                winComponent = <Title level={3} style={LoseStyle}>You lose!</Title>;
+        }
+
         return (
             <div className="App">
                 <StyledHeading>SameGame for React</StyledHeading>
@@ -119,6 +137,7 @@ class App extends React.Component<Props, State> {
 
                 <Row>
                     <Col xs={0} md={4} />
+
                     <Col xs={{span: 24, pull: 0}} md={{span: 6, push: 10}}>
                         <Config
                             gridSize={this.state.gridSize}
@@ -128,14 +147,23 @@ class App extends React.Component<Props, State> {
                             onBlockCountChange={this.onBlockCountChange.bind(this)}
                         />
                     </Col>
+
                     <Col xs={{span: 24, push: 0}} md={{span: 10, pull: 6}} style={CenteringStyle}>
-                        <StyledBoard
-                            onClick={this.onTileClick.bind(this)}
-                            grid={this.state.grid.getData()}
-                        />
-                        {this.state.grid.isGameFinished() ? <h1>Game over!</h1> : <h1>Game isn't over yet</h1>}
-                        {this.state.grid.didWeWin() ? <h1>We won!</h1> : <h1>We haven't won yet</h1>}
+
+                        <Row style={{width: "100%"}}>
+                            <Col span={24} style={CenteringStyle}>
+                                <StyledBoard
+                                    onClick={this.onTileClick.bind(this)}
+                                    grid={this.state.grid.getData()}
+                                />
+                            </Col>
+                            <Col span={24}>
+                                {winComponent != null ? winComponent : <React.Fragment />}
+                            </Col>
+                        </Row>
+
                     </Col>
+
                     <Col xs={0} md={4} />
                 </Row>
             </div>
