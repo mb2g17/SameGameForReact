@@ -21,6 +21,31 @@ export class Grid {
     }
 
     /**
+     * Gets adjacent tile positions
+     * @param row - the row of the tile
+     * @param col - the column of the tile
+     */
+    getAdjacentTiles(row: number, col: number): [number, number][] {
+        let size = this.data.length;
+        let rv: [number, number][] = [];
+        
+        // Checks left
+        if (col > 0)
+            rv.push([row, col - 1]);
+        // Checks right
+        if (col < size - 1)
+            rv.push([row, col + 1]);
+        // Checks up
+        if (row > 0)
+            rv.push([row - 1, col]);
+        // Checks down
+        if (row < size - 1)
+            rv.push([row + 1, col]);
+            
+        return rv;
+    }
+
+    /**
      * Selects a position, and removes the group, if it can
      * @param row - the row to select on
      * @param col - the column, to select on
@@ -31,6 +56,12 @@ export class Grid {
 
         // If we just clicked on nothing, do nothing
         if (selectedColour === 0)
+            return;
+
+        // If this group is only one tile big, do nothing
+        let adjacentTiles = this.getAdjacentTiles(row, col);
+        adjacentTiles = _.filter(adjacentTiles, ([r, c]) => this.data[r][c] === selectedColour);
+        if (adjacentTiles.length === 0)
             return;
 
         // Gets size of grid
@@ -54,22 +85,14 @@ export class Grid {
                 // Removes it
                 this.data[selectedRow][selectedCol] = 0;
 
-                // Checks left
-                if (selectedCol > 0)
-                    if (this.data[selectedRow][selectedCol - 1] === selectedColour)
-                        fringe.push([selectedRow, selectedCol - 1]);
-                // Checks right
-                if (selectedCol < size - 1)
-                    if (this.data[selectedRow][selectedCol + 1] === selectedColour)
-                        fringe.push([selectedRow, selectedCol + 1]);
-                // Checks up
-                if (selectedRow > 0)
-                    if (this.data[selectedRow - 1][selectedCol] === selectedColour)
-                        fringe.push([selectedRow - 1, selectedCol]);
-                // Checks down
-                if (selectedRow < size - 1)
-                    if (this.data[selectedRow + 1][selectedCol] === selectedColour)
-                        fringe.push([selectedRow + 1, selectedCol]);
+                // Gets adjacent tiles
+                let adjacentTiles = this.getAdjacentTiles(selectedRow, selectedCol);
+
+                // Filters out tiles that aren't our colour
+                adjacentTiles = _.filter(adjacentTiles, ([r, c]) => this.data[r][c] === selectedColour);
+
+                // Adds these to the fringe
+                _.forEach(adjacentTiles, e => fringe.push(e));
             }
             else
                 break;
