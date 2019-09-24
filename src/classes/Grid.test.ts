@@ -16,7 +16,7 @@ it('should remove groups of same-coloured tiles', function () {
         [1, 3, 2],
         [1, 2, 3]
     ]);
-    grid.select(1, 0);
+    grid = grid.select(1, 0);
     expect(grid.getData()).toEqual([
         [0, 2, 3],
         [0, 3, 2],
@@ -30,7 +30,7 @@ it('should let top tiles fall when lower ones are removed', function () {
         [3, 3, 3],
         [2, 1, 2]
     ]);
-    grid.select(1, 1);
+    grid = grid.select(1, 1);
     expect(grid.getData()).toEqual([
         [0, 0, 0],
         [1, 2, 1],
@@ -44,7 +44,7 @@ it('should not remove groups of 1 tile', function () {
         [1, 3, 2],
         [1, 2, 3]
     ]);
-    grid.select(0, 2);
+    grid = grid.select(0, 2);
     expect(grid.getData()).toEqual([
         [3, 2, 3],
         [1, 3, 2],
@@ -58,7 +58,7 @@ it('should do nothing when clicking on nothing', function () {
         [0, 0, 0],
         [1, 2, 3]
     ]);
-    grid.select(1, 1);
+    grid = grid.select(1, 1);
     expect(grid.getData()).toEqual([
         [3, 2, 3],
         [0, 0, 0],
@@ -73,7 +73,7 @@ it('should move tiles to the right on the bottom row', function () {
         [0, 3, 0],
         [1, 3, 2]
     ]);
-    grid.select(1, 1);
+    grid = grid.select(1, 1);
     expect(grid.getData()).toEqual([
         [0, 0, 0],
         [0, 0, 0],
@@ -86,7 +86,7 @@ it('should move tiles to the right on the bottom row', function () {
         [0, 3, 0, 0],
         [1, 3, 0, 2]
     ]);
-    grid.select(1, 1);
+    grid = grid.select(1, 1);
     expect(grid.getData()).toEqual([
         [0, 0, 0, 0],
         [0, 0, 0, 0],

@@ -84,15 +84,15 @@ class App extends React.Component<Props, State> {
      * @param col - the column of the tile clicked
      */
     onTileClick(row: number, col: number): void {
-        let newGrid = this.state.grid.select(row, col);
         this.setState({
             ...this.state,
-            grid: newGrid
+            grid: this.state.grid.select(row, col)
         })
     }
 
     /**
-     * When we slide the slider
+     * When we change the grid size
+     * @param value what to change the grid size to
      */
     onGridSizeChange(value: any): void {
         this.randomiseGrid(value, this.state.blockCount, false);
@@ -101,6 +101,10 @@ class App extends React.Component<Props, State> {
         });
     }
 
+    /**
+     * When we change the block count
+     * @param value what to change the block count to
+     */
     onBlockCountChange(value: any): void {
         this.randomiseGrid(this.state.gridSize, value, false);
         this.setState({
