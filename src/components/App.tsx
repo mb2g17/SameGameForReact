@@ -18,6 +18,7 @@ interface Props {
 interface State {
     grid: Grid;
     gridSize: number;
+    blockCount: number;
 }
 
 /**
@@ -47,15 +48,16 @@ class App extends React.Component<Props, State> {
 
         // Sets up grid
         this.state = {
-            grid: this.props.startingGrid !== undefined ? this.props.startingGrid : this.randomiseGrid(10),
-            gridSize: 10
+            grid: this.props.startingGrid !== undefined ? this.props.startingGrid : this.randomiseGrid(10, 4, true),
+            gridSize: 10,
+            blockCount: 4
         };
     }
 
     /**
      * Randomises the grid
      */
-    randomiseGrid(size: number): Grid {
+    randomiseGrid(size: number, blockCount: number, mount: boolean): Grid {
         // Creates a number grid
         let numberGrid: number[][] = [];
 
@@ -64,14 +66,15 @@ class App extends React.Component<Props, State> {
             numberGrid.push([]);
             for (let j = 0; j < size; j++)
             {
-                numberGrid[i].push(_.random(1,4));
+                numberGrid[i].push(_.random(1,blockCount));
             }
         }
 
         let grid = new Grid(numberGrid);
-        this.setState({
-            grid: new Grid(numberGrid)
-        });
+        if (!mount)
+            this.setState({
+                grid: new Grid(numberGrid)
+            });
         return grid;
     }
 
@@ -88,10 +91,17 @@ class App extends React.Component<Props, State> {
     /**
      * When we slide the slider
      */
-    onSliderSlide(value: any): void {
-        this.randomiseGrid(value);
+    onGridSizeChange(value: any): void {
+        this.randomiseGrid(value, this.state.blockCount, false);
         this.setState({
             gridSize: value
+        });
+    }
+
+    onBlockCountChange(value: any): void {
+        this.randomiseGrid(this.state.gridSize, value, false);
+        this.setState({
+            blockCount: value
         });
     }
 
@@ -113,7 +123,7 @@ class App extends React.Component<Props, State> {
                     </Col>
                     <Col span={6}>
                         <Button
-                            onClick={() => this.randomiseGrid(this.state.gridSize)}
+                            onClick={() => this.randomiseGrid(this.state.gridSize, this.state.blockCount, false)}
                             type="primary"
                         >Randomise grid</Button>
 
@@ -121,8 +131,17 @@ class App extends React.Component<Props, State> {
                             <StyledSlider
                                 min={3}
                                 max={15}
-                                onChange={this.onSliderSlide.bind(this)}
+                                onChange={this.onGridSizeChange.bind(this)}
                                 defaultValue={10}
+                            />
+                        </CenteringDiv>
+
+                        <CenteringDiv>
+                            <StyledSlider
+                                min={2}
+                                max={7}
+                                onChange={this.onBlockCountChange.bind(this)}
+                                defaultValue={4}
                             />
                         </CenteringDiv>
                     </Col>

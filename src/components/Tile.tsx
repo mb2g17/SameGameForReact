@@ -4,6 +4,9 @@ import red from "../assets/red.fw.png";
 import blue from "../assets/blue.fw.png";
 import green from "../assets/green.fw.png";
 import yellow from "../assets/yellow.fw.png";
+import orange from "../assets/orange.fw.png";
+import cyan from "../assets/cyan.fw.png";
+import purple from "../assets/purple.fw.png";
 import blank from "../assets/blank.fw.png";
 
 interface Props {
@@ -30,6 +33,15 @@ export class Tile extends React.Component<Props, State> {
                 break;
             case 4:
                 colour = yellow;
+                break;
+            case 5:
+                colour = orange;
+                break;
+            case 6:
+                colour = cyan;
+                break;
+            case 7:
+                colour = purple;
                 break;
             default:
                 colour = blank;
