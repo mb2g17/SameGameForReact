@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/Taking1n1/SameGameForReact.svg?branch=master)](https://travis-ci.org/Taking1n1/SameGameForReact)
+# SameGame for React
+
+This is an implementation of [SameGame](https://en.wikipedia.org/wiki/SameGame) built in React.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
