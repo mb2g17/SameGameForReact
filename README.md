@@ -3,6 +3,8 @@
 
 This is an implementation of [SameGame](https://en.wikipedia.org/wiki/SameGame) built in React.
 
+Play the game [here](https://taking1n1.github.io/SameGameForReact/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
