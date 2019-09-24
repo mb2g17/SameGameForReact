@@ -1,7 +1,8 @@
 import * as React from "react";
 
 interface Props {
-    no: number
+    no: number;
+    onClick: (no: number) => void;
 }
 
 interface State {
@@ -34,7 +35,10 @@ export class Tile extends React.Component<Props, {}> {
         }
 
         return (<td>
-            <img src={require("../assets/" + colour + ".fw.png")} />
+            <img
+                onClick={() => this.props.onClick(this.props.no)}
+                src={require("../assets/" + colour + ".fw.png")}
+            />
         </td>);
     }
 }

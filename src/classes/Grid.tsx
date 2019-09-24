@@ -26,6 +26,6 @@ export class Grid {
      * @param col - the column, to select on
      */
     select(row: number, col: number): void {
-
+        alert("selected " + row + " and " + col);
     }
 }

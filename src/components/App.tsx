@@ -15,6 +15,9 @@ interface State {
     grid: Grid
 }
 
+/**
+ * Uses flex box to center stuff
+ */
 const CenteringDiv = styled.div`
     width: "100vw";
     display: flex;
@@ -54,6 +57,15 @@ class App extends React.Component<Props, State> {
         return grid;
     }
 
+    /**
+     * When user clicks on a tile
+     * @param row - the row of the tile clicked
+     * @param col - the column of the tile clicked
+     */
+    onTileClick(row: number, col: number): void {
+        this.state.grid.select(row, col);
+    }
+
     render(): React.ReactElement<any> {
         return (
             <div className="App">
@@ -61,7 +73,10 @@ class App extends React.Component<Props, State> {
                 <h2>by Matthew Barnes</h2>
 
                 <CenteringDiv>
-                    <Board grid={this.state.grid} />
+                    <Board
+                        onClick={this.onTileClick.bind(this)}
+                        grid={this.state.grid.getData()}
+                    />
                 </CenteringDiv>
 
                 <button onClick={() => this.randomiseGrid(10)}>Randomise grid</button>

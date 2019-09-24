@@ -1,11 +1,11 @@
 import React from "react";
 import _ from "lodash";
 
-import { Grid } from "../classes/Grid";
 import { Tile } from "./Tile";
 
 interface Props {
-    grid: Grid
+    grid: number[][];
+    onClick: (r: number, c: number) => void;
 }
 
 interface State {
@@ -20,22 +20,31 @@ export class Board extends React.Component<Props, State> {
         };
     }
 
-    render(): React.ReactElement<any> {
-        // Gets numerical data of grid
-        let gridArray: number[][] = this.props.grid.getData();
+    /**
+     * When user clicks on a tile
+     * @param rowNo - the row of the tile clicked
+     * @param colNo - the column of the tile clicked
+     */
+    onTileClick(rowNo: number, colNo: number): void {
+        this.props.onClick(rowNo, colNo);
+    }
 
+    render(): React.ReactElement<any> {
         // Declares JSX array to render
         let jsx: React.ReactElement<any>[] = [];
 
         // For every row
-        _.forEach(gridArray, (r: number[], rowKey: number) => {
+        _.forEach(this.props.grid, (r: number[], rowKey: number) => {
             // Create our jsx row
             let jsxRow: React.ReactElement<any>[] = [];
 
             // For every cell in the row
             _.forEach(r, (c: number, cellKey: number) => {
                 // Add a cell
-                jsxRow.push(<Tile no={c} key={2 ** rowKey * 3 ** cellKey} />);
+                jsxRow.push(<Tile
+                    onClick={() => this.onTileClick(rowKey, cellKey)}
+                    no={c} key={2 ** rowKey * 3 ** cellKey}
+                />);
             });
 
             // Add row to our table
