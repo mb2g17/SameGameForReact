@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Taking1n1/SameGameForReact.svg?branch=master)](https://travis-ci.org/Taking1n1/SameGameForReact)
+[![Build Status](https://travis-ci.org/mb2g17/SameGameForReact.svg?branch=master)](https://travis-ci.org/mb2g17/SameGameForReact)
 # SameGame for React
 
 This is an implementation of [SameGame](https://en.wikipedia.org/wiki/SameGame) built in React.
