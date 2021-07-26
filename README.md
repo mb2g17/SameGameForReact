@@ -1,9 +1,11 @@
 [![Build Status](https://drone.matt-barnes.co.uk/api/badges/mb2g17/SameGameForReact/status.svg)](https://drone.matt-barnes.co.uk/mb2g17/SameGameForReact)
+[![Available on GitHub](https://img.shields.io/badge/Available%20on-GitHub-white?style=flat-square&logo=github)](https://github.com/mb2g17/SameGameForReact)
+
 # SameGame for React
 
 This is an implementation of [SameGame](https://en.wikipedia.org/wiki/SameGame) built in React.
 
-Play the game [here](https://taking1n1.github.io/SameGameForReact/).
+Play the game [here](https://mb2g17.github.io/SameGameForReact/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
