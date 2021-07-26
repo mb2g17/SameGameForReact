@@ -1,0 +1,10 @@
+kind: pipeline
+type: docker
+name: samegame-for-react
+
+steps:
+    - name: test
+      image: node:lts
+      commands:
+        - npm install
+        - yarn test --watchAll=false
