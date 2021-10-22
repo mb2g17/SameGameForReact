@@ -6,5 +6,5 @@ steps:
     - name: test
       image: node:lts
       commands:
-        - npm ci
+        - npm install
         - yarn test --watchAll=false
