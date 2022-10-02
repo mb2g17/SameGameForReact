@@ -10,6 +10,18 @@ Play the game [here](https://demos.matt-barnes.co.uk/samegame-for-react).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to build since 02/01/2022
+
+This project has some serious software rot :P
+
+Upon trying to install and build, you'll get build errors in node_modules related to imported types.
+
+As a workaround, edit the file in node_modules (for me it was `Codegen.d.ts`) and replace the erroneous imported types with `any` types.
+
+Then, the builds will work ok.
+
+P.S. I recommend using `yarn`, not `npm`. Yes, I know CI uses `npm`. Yes, I know I'm an idiot for doing that. But I don't want to change it because it's working.
+
 ## Available Scripts
 
 In the project directory, you can run:
