@@ -6,7 +6,7 @@
 
 This is an implementation of [SameGame](https://en.wikipedia.org/wiki/SameGame) built in React.
 
-Play the game [here](https://mb2g17.github.io/SameGameForReact/).
+Play the game [here](https://demos.matt-barnes.co.uk/samegame-for-react).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
